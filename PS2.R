@@ -20,40 +20,7 @@ Benford = function(x, control){
   }
 }
 
-Benford(1:9, 1)
-
-
-print.benfords = function(x, control){
-  digit = substr(x, 1, 1)
-  freq = table(digit)
-  m = freq/sum(freq)
-  for (i in 1:9){
-    Leemis = max(m - log10(1+1/i))
-    ChoVec = (m - log10(1+1/i))^2
-    Cho_Gains = sqrt(sum(ChoVec))
-  }
-  Stars_L = symnum(Leemis, cutpoints = c(0, 0.851,  0.967, 1.212, 100), corr = F,
-                   symbols = c("cannot reject null","*","**","***"))
-  Signif_L = cbind("Leemis", Leemis, Stars_L)
-  Stars_C = symnum(Cho_Gains, cutpoints = c(0, 1.212,  1.330, 1.569, 100), corr = F,
-                   symbols = c("cannot reject null","*","**","***"))
-  Signif_C = cbind("Cho Gains", Cho_Gains, Stars_C)
-  
-  if (control == 1){
-    return(Signif_L)
-  }
-  
-  if (control == 2){
-    return(Signif_C)
-  }
-  else{
-    return(c(Signif_L,Signif_C))
-  }
-}
-print.benfords(1:9, 3)
-
-
-
+Benford(1:9, 3)
 
 
 
@@ -95,12 +62,18 @@ print.benfords = function(x, control){
   }
 }
 }
-print.benfords(1:9, 3)$Leemis
+
+print.benfords(1:9, 3)
+
+
 getwd()
 setwd("/Users/emilygarner/Documents/School/Second Sem/R/Problem Sets/PS2")
-sink.benfords = function(x){
-  sink(file = "Print_Benfords.csv")
-  print.benfords(1:9, 3)$Leemis
-  sink()
+
+
+print.benfords(1:9, 3)
+
+sink.benfords = function(x, n){
+sink(file = "Print_Benfords_2.csv", append = F, split = F)
+print.benfords(x, n)
+sink()
 }
-sink.benfords(1:9)
