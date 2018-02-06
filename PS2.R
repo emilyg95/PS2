@@ -53,8 +53,10 @@ print.benfords = function(x, control){
       print.noquote("Cho Gains: ***")
     }
   if (control == 1){
+    print.noquote("Significance Levels; a = 0.1*, a = 0.05**, a = 0.01***")
     return(Leemis)
   }else if (control == 2){
+    print.noquote("Significance Levels; a = 0.1*, a = 0.05**, a = 0.01***")
     return(Cho_Gains)
   }else{
     print.noquote("Significance Levels; a = 0.1*, a = 0.05**, a = 0.01***")
@@ -63,17 +65,15 @@ print.benfords = function(x, control){
 }
 }
 
-print.benfords(1:9, 3)
 
+print.benfords(1:9, 1)
+View(unlist(print.benfords(1:9, 3)))
 
 getwd()
 setwd("/Users/emilygarner/Documents/School/Second Sem/R/Problem Sets/PS2")
 
-
-print.benfords(1:9, 3)
-
-sink.benfords = function(x, n){
-sink(file = "Print_Benfords_2.csv", append = F, split = F)
-print.benfords(x, n)
-sink()
+capture.benfords = function(x, control){
+capture.output(print.benfords(x, control), file = "Capture_Benfords.csv")
 }
+
+capture.benfords(1:9, 3)
