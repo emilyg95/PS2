@@ -11,14 +11,17 @@ Benford = function(x, control){ ##creates a function with 2 inputs
   }
 
   if (control == 1){ 
+    print.noquote(freq)
     return(Leemis)
   }
   
   if (control == 2){
+    print.noquote(freq)
     return(Cho_Gains)
   }
   else{
-    return(c(Leemis,Cho_Gains)) ## an if else statement that allows you to tell the function which outputs to return based on the control input
+    print.noquote(freq)
+    return(c(Leemis,Cho_Gains)) ## an if else statement that allows you to tell the function which outputs to return based on the control input and prints the table containing the full digit distribution no matter what
   }
 }
 
